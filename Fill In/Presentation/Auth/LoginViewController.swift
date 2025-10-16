@@ -7,10 +7,10 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: BaseViewController<LoginView, AuthViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
