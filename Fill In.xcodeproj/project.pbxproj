@@ -14,6 +14,12 @@
 		68A822012EA1641400E81EF2 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822002EA1641400E81EF2 /* AddTaskView.swift */; };
 		68A822032EA1643200E81EF2 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822022EA1643200E81EF2 /* AddTaskViewModel.swift */; };
 		68A822052EA1646800E81EF2 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822042EA1646800E81EF2 /* TaskCell.swift */; };
+		68A822082EA16E3100E81EF2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822072EA16E3100E81EF2 /* MainTabBarController.swift */; };
+		68A8220A2EA16EC700E81EF2 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822092EA16EC700E81EF2 /* StatsViewController.swift */; };
+		68A8220D2EA16F3300E81EF2 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8220C2EA16F3300E81EF2 /* StatsView.swift */; };
+		68A8220F2EA16F5100E81EF2 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8220E2EA16F5100E81EF2 /* StatsViewModel.swift */; };
+		68A822112EA16FCD00E81EF2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */; };
+		68A822132EA16FE200E81EF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822122EA16FE200E81EF2 /* Constants.swift */; };
 		68F81BA32EA12BD800AA48DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F81B9F2EA12BD800AA48DC /* Assets.xcassets */; };
 		68F81BA42EA12BD800AA48DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F81BA12EA12BD800AA48DC /* LaunchScreen.storyboard */; };
 		68F81BA72EA12C3100AA48DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BA62EA12C3100AA48DC /* LoginViewController.swift */; };
@@ -35,6 +41,12 @@
 		68A822002EA1641400E81EF2 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		68A822022EA1643200E81EF2 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		68A822042EA1646800E81EF2 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		68A822072EA16E3100E81EF2 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		68A822092EA16EC700E81EF2 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		68A8220C2EA16F3300E81EF2 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		68A8220E2EA16F5100E81EF2 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		68A822122EA16FE200E81EF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		68F81B9F2EA12BD800AA48DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68F81BA02EA12BD800AA48DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68F81BA62EA12C3100AA48DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -77,10 +89,62 @@
 			isa = PBXGroup;
 			children = (
 				68F81B9E2EA12BB900AA48DC /* App */,
-				68F81BA22EA12BD800AA48DC /* Resources */,
 				68F81BA52EA12C0000AA48DC /* Presentation */,
+				68F81BA22EA12BD800AA48DC /* Resources */,
+				68A822152EA1700200E81EF2 /* Data */,
+				68A822162EA1701900E81EF2 /* Domain */,
+				68A822172EA1702300E81EF2 /* Services */,
+				68A822182EA1706100E81EF2 /* Utils */,
 			);
 			path = "Fill In";
+			sourceTree = "<group>";
+		};
+		68A822062EA16E1100E81EF2 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				68A822072EA16E3100E81EF2 /* MainTabBarController.swift */,
+				68F81BAF2EA12C8A00AA48DC /* TaskList */,
+				68A8220B2EA16F0300E81EF2 /* Stats */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		68A8220B2EA16F0300E81EF2 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				68A822092EA16EC700E81EF2 /* StatsViewController.swift */,
+				68A8220C2EA16F3300E81EF2 /* StatsView.swift */,
+				68A8220E2EA16F5100E81EF2 /* StatsViewModel.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		68A822152EA1700200E81EF2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		68A822162EA1701900E81EF2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		68A822172EA1702300E81EF2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		68A822182EA1706100E81EF2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		68F81B9E2EA12BB900AA48DC /* App */ = {
@@ -88,6 +152,8 @@
 			children = (
 				685253052EA0FA02005B13FC /* SceneDelegate.swift */,
 				685253002EA0FA02005B13FC /* AppDelegate.swift */,
+				68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */,
+				68A822122EA16FE200E81EF2 /* Constants.swift */,
 				685253022EA0FA02005B13FC /* Info.plist */,
 			);
 			path = App;
@@ -106,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				68F81BA82EA12C4900AA48DC /* Auth */,
-				68F81BAF2EA12C8A00AA48DC /* TaskList */,
+				68A822062EA16E1100E81EF2 /* MainTab */,
 				68F81BB22EA12CB500AA48DC /* AddTask */,
 				68F81BB32EA12E0100AA48DC /* Shared */,
 			);
@@ -228,15 +294,21 @@
 			files = (
 				68A821FF2EA163BE00E81EF2 /* TaskViewModel.swift in Sources */,
 				68F81BA72EA12C3100AA48DC /* LoginViewController.swift in Sources */,
+				68A822082EA16E3100E81EF2 /* MainTabBarController.swift in Sources */,
 				68A822032EA1643200E81EF2 /* AddTaskViewModel.swift in Sources */,
+				68A8220F2EA16F5100E81EF2 /* StatsViewModel.swift in Sources */,
 				68F81BB72EA12E8400AA48DC /* Bindable.swift in Sources */,
+				68A8220A2EA16EC700E81EF2 /* StatsViewController.swift in Sources */,
 				68A822012EA1641400E81EF2 /* AddTaskView.swift in Sources */,
 				68F81BAE2EA12C7F00AA48DC /* TaskViewController.swift in Sources */,
 				68A821FD2EA1639800E81EF2 /* TaskView.swift in Sources */,
 				685253082EA0FA02005B13FC /* AppDelegate.swift in Sources */,
 				68A822052EA1646800E81EF2 /* TaskCell.swift in Sources */,
 				685253092EA0FA02005B13FC /* SceneDelegate.swift in Sources */,
+				68A8220D2EA16F3300E81EF2 /* StatsView.swift in Sources */,
 				68F81BB12EA12CB100AA48DC /* AddTaskViewController.swift in Sources */,
+				68A822132EA16FE200E81EF2 /* Constants.swift in Sources */,
+				68A822112EA16FCD00E81EF2 /* AppCoordinator.swift in Sources */,
 				68F81BB92EA13D9A00AA48DC /* LoginView.swift in Sources */,
 				68F81BB52EA12E4400AA48DC /* BaseViewController.swift in Sources */,
 				68F81BBB2EA13E9900AA48DC /* AuthViewModel.swift in Sources */,
