@@ -20,6 +20,11 @@
 		68A8220F2EA16F5100E81EF2 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8220E2EA16F5100E81EF2 /* StatsViewModel.swift */; };
 		68A822112EA16FCD00E81EF2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */; };
 		68A822132EA16FE200E81EF2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822122EA16FE200E81EF2 /* Constants.swift */; };
+		68A8221B2EA177C200E81EF2 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8221A2EA177C200E81EF2 /* BaseCoordinator.swift */; };
+		68A8221D2EA177CF00E81EF2 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8221C2EA177CF00E81EF2 /* LoginCoordinator.swift */; };
+		68A8221F2EA177E600E81EF2 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8221E2EA177E600E81EF2 /* TabBarCoordinator.swift */; };
+		68A822212EA177FD00E81EF2 /* TasksCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822202EA177FD00E81EF2 /* TasksCoordinator.swift */; };
+		68A822232EA1785800E81EF2 /* StatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A822222EA1785800E81EF2 /* StatsCoordinator.swift */; };
 		68F81BA32EA12BD800AA48DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F81B9F2EA12BD800AA48DC /* Assets.xcassets */; };
 		68F81BA42EA12BD800AA48DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F81BA12EA12BD800AA48DC /* LaunchScreen.storyboard */; };
 		68F81BA72EA12C3100AA48DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BA62EA12C3100AA48DC /* LoginViewController.swift */; };
@@ -47,6 +52,11 @@
 		68A8220E2EA16F5100E81EF2 /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
 		68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		68A822122EA16FE200E81EF2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		68A8221A2EA177C200E81EF2 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		68A8221C2EA177CF00E81EF2 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		68A8221E2EA177E600E81EF2 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		68A822202EA177FD00E81EF2 /* TasksCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCoordinator.swift; sourceTree = "<group>"; };
+		68A822222EA1785800E81EF2 /* StatsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCoordinator.swift; sourceTree = "<group>"; };
 		68F81B9F2EA12BD800AA48DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68F81BA02EA12BD800AA48DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68F81BA62EA12C3100AA48DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				68F81B9E2EA12BB900AA48DC /* App */,
+				68A822192EA1768000E81EF2 /* Coordinators */,
 				68F81BA52EA12C0000AA48DC /* Presentation */,
 				68F81BA22EA12BD800AA48DC /* Resources */,
 				68A822152EA1700200E81EF2 /* Data */,
@@ -147,12 +158,24 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		68A822192EA1768000E81EF2 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				68A8221A2EA177C200E81EF2 /* BaseCoordinator.swift */,
+				68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */,
+				68A8221C2EA177CF00E81EF2 /* LoginCoordinator.swift */,
+				68A8221E2EA177E600E81EF2 /* TabBarCoordinator.swift */,
+				68A822202EA177FD00E81EF2 /* TasksCoordinator.swift */,
+				68A822222EA1785800E81EF2 /* StatsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		68F81B9E2EA12BB900AA48DC /* App */ = {
 			isa = PBXGroup;
 			children = (
 				685253052EA0FA02005B13FC /* SceneDelegate.swift */,
 				685253002EA0FA02005B13FC /* AppDelegate.swift */,
-				68A822102EA16FCD00E81EF2 /* AppCoordinator.swift */,
 				68A822122EA16FE200E81EF2 /* Constants.swift */,
 				685253022EA0FA02005B13FC /* Info.plist */,
 			);
@@ -296,6 +319,9 @@
 				68F81BA72EA12C3100AA48DC /* LoginViewController.swift in Sources */,
 				68A822082EA16E3100E81EF2 /* MainTabBarController.swift in Sources */,
 				68A822032EA1643200E81EF2 /* AddTaskViewModel.swift in Sources */,
+				68A8221F2EA177E600E81EF2 /* TabBarCoordinator.swift in Sources */,
+				68A8221D2EA177CF00E81EF2 /* LoginCoordinator.swift in Sources */,
+				68A8221B2EA177C200E81EF2 /* BaseCoordinator.swift in Sources */,
 				68A8220F2EA16F5100E81EF2 /* StatsViewModel.swift in Sources */,
 				68F81BB72EA12E8400AA48DC /* Bindable.swift in Sources */,
 				68A8220A2EA16EC700E81EF2 /* StatsViewController.swift in Sources */,
@@ -303,11 +329,13 @@
 				68F81BAE2EA12C7F00AA48DC /* TaskViewController.swift in Sources */,
 				68A821FD2EA1639800E81EF2 /* TaskView.swift in Sources */,
 				685253082EA0FA02005B13FC /* AppDelegate.swift in Sources */,
+				68A822232EA1785800E81EF2 /* StatsCoordinator.swift in Sources */,
 				68A822052EA1646800E81EF2 /* TaskCell.swift in Sources */,
 				685253092EA0FA02005B13FC /* SceneDelegate.swift in Sources */,
 				68A8220D2EA16F3300E81EF2 /* StatsView.swift in Sources */,
 				68F81BB12EA12CB100AA48DC /* AddTaskViewController.swift in Sources */,
 				68A822132EA16FE200E81EF2 /* Constants.swift in Sources */,
+				68A822212EA177FD00E81EF2 /* TasksCoordinator.swift in Sources */,
 				68A822112EA16FCD00E81EF2 /* AppCoordinator.swift in Sources */,
 				68F81BB92EA13D9A00AA48DC /* LoginView.swift in Sources */,
 				68F81BB52EA12E4400AA48DC /* BaseViewController.swift in Sources */,
