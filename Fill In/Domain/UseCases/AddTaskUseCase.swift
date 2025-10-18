@@ -9,4 +9,13 @@ import Foundation
 
 final class AddTaskUseCase {
     
+    private let repository: TaskRepository
+    
+    init(repository: TaskRepository) {
+        self.repository = repository
+    }
+    
+    func execute(task: Task) {
+        repository.addTask(task)
+    }
 }

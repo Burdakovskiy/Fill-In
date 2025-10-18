@@ -9,9 +9,11 @@ import UIKit
 
 final class AppCoordinator: BaseCoordinator {
     private let window: UIWindow
+    private let diContained: AppDIContainer
     
     init(window: UIWindow, navigationController: UINavigationController) {
         self.window = window
+        self.diContained = AppDIContainer()
         super.init(navigationController: navigationController)
     }
     
@@ -30,7 +32,7 @@ private extension AppCoordinator {
     }
     
     func showMainFlow() {
-        let tabBarCoordinator = TabBarCoordinator()
+        let tabBarCoordinator = TabBarCoordinator(diContainer: diContained)
         addChildCoordinator(tabBarCoordinator)
         tabBarCoordinator.start()
         

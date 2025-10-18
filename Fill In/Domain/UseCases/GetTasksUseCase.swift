@@ -8,5 +8,13 @@
 import Foundation
 
 final class GetTasksUseCase {
+    private let repository: TaskRepository
     
+    init(repository: TaskRepository) {
+        self.repository = repository
+    }
+    
+    func execute() -> [Task] {
+        repository.getAllTasks()
+    }
 }

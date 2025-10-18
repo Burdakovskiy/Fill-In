@@ -13,15 +13,12 @@ final class AppDIContainer {
     lazy var speechService: SpeechService = SpeechService()
     
     //MARK: - Data
-//    lazy var taskRepository: TaskRepository = RealmTaskRepository
+    lazy var taskRepository: TaskRepository = RealmTaskRepository()
     
     //MARK: - UseCases
     
-//    func makeAddTaskUseCase() -> AddTaskUseCase {
-//        AddTaskUseCase(repository: taskRepository)
-//    }
-    
-    func makeTasksViewModel() -> TaskViewModel {
-        
-    }
+    func makeAddTaskUseCase() -> AddTaskUseCase { AddTaskUseCase(repository: taskRepository) }
+    func makeGetTasksUseCase() -> GetTasksUseCase { GetTasksUseCase(repository: taskRepository) }
+    func makeUpdateTaskUseCase() -> UpdateTaskUseCase { UpdateTaskUseCase(repository: taskRepository) }
+    func makeDeleteTaskUseCase() -> DeleteTaskUseCase { DeleteTaskUseCase(repository: taskRepository)}
 }

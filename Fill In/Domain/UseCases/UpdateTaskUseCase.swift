@@ -8,5 +8,13 @@
 import Foundation
 
 final class UpdateTaskUseCase {
+    private let repository: TaskRepository
     
+    init(repository: TaskRepository) {
+        self.repository = repository
+    }
+    
+    func execute(task: Task) {
+        repository.updateTask(task)
+    }
 }

@@ -8,14 +8,19 @@
 import UIKit
 
 final class TasksCoordinator: BaseCoordinator {
+    private let moduleFactory: TasksModuleFactory
+    
+    init(moduleFactory: TasksModuleFactory) {
+        self.moduleFactory = moduleFactory
+    }
     
     override func start() {
-        let viewModel = TaskViewModel()
-        let controller = TaskViewController(viewModel: viewModel)
+        let controller = moduleFactory.makeTasksViewController()
         
-        viewModel.onAddTaskTapped = { [weak self] in
+        controller.viewModel.onAddTaskTapped = { [weak self] in
             self?.showAddTask()
         }
+        
         navigationController.viewControllers = [controller]
         print("Tasks start")
     }
@@ -23,6 +28,6 @@ final class TasksCoordinator: BaseCoordinator {
     func showAddTask() {
         let addTaskViewModel = AddTaskViewModel()
         let addTaskVC = AddTaskViewController(viewModel: addTaskViewModel)
-        navigationController.pushViewController(addTaskVC, animated: true)
+        navigationController.pushViewController(addTaskVC, animated: true) //Переписать на фабрику
     }
 }

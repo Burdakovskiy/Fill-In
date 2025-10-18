@@ -10,11 +10,15 @@ import UIKit
 final class TabBarCoordinator: BaseCoordinator {
     
     private let tabBarController = MainTabBarController()
+    private let diContainer: AppDIContainer
     private let tasksCoordinator: TasksCoordinator
     private let statsCoordinator: StatsCoordinator
     
-    init() {
-        tasksCoordinator = TasksCoordinator(navigationController: UINavigationController())
+    init(diContainer: AppDIContainer) {
+        self.diContainer = diContainer
+        let tasksModuleFactory = TasksModuleFactory(diContainer: diContainer)
+        
+        tasksCoordinator = TasksCoordinator(moduleFactory: tasksModuleFactory)
         statsCoordinator = StatsCoordinator(navigationController: UINavigationController())
         super.init(navigationController: UINavigationController())
     }
