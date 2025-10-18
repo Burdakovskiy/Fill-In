@@ -16,9 +16,15 @@ final class TasksModuleFactory {
     
     func makeTasksViewController() -> TaskViewController {
         let viewModel = TaskViewModel(getTasksUseCase: diContainer.makeGetTasksUseCase(),
-                                      addTaskUseCase: diContainer.makeAddTaskUseCase(),
-                                      updateTaskUseCase: diContainer.makeUpdateTaskUseCase(),
                                       deleteTaskUseCase: diContainer.makeDeleteTaskUseCase())
         return TaskViewController(viewModel: viewModel)
+    }
+    
+    func makeAddTaskViewController(task: Task?) -> AddTaskViewController {
+        let viewModel = AddTaskViewModel(addTaskUseCase: diContainer.makeAddTaskUseCase(),
+                                         updateTaskUseCase: diContainer.makeUpdateTaskUseCase(),
+                                         deleteTaskUseCase: diContainer.makeDeleteTaskUseCase(),
+                                         task: task)
+        return AddTaskViewController(viewModel: viewModel)
     }
 }

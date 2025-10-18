@@ -21,13 +21,20 @@ final class TasksCoordinator: BaseCoordinator {
             self?.showAddTask()
         }
         
+        controller.viewModel.onTaskSelected = { [weak self] in
+            self?.showEditTask(task)
+        }
+        
         navigationController.viewControllers = [controller]
-        print("Tasks start")
     }
     
-    func showAddTask() {
-        let addTaskViewModel = AddTaskViewModel()
-        let addTaskVC = AddTaskViewController(viewModel: addTaskViewModel)
-        navigationController.pushViewController(addTaskVC, animated: true) //Переписать на фабрику
+    private func showAddTask() {
+        let addVC = moduleFactory.makeAddTaskViewController(task: nil)
+        navigationController.pushViewController(addVC, animated: true)
+    }
+    
+    private func showEditTask(_ task: Task) {
+        let editVC = moduleFactory.makeAddTaskViewController(task: task)
+        navigationController.pushViewController(editVC, animated: true)
     }
 }

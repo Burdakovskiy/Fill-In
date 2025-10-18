@@ -9,26 +9,31 @@ import Foundation
 
 final class TaskViewModel {
     private let getTasksUseCase: GetTasksUseCase
-    private let addTaskUseCase: AddTaskUseCase
-    private let updateTaskUseCase: UpdateTaskUseCase
     private let deleteTaskUseCase: DeleteTaskUseCase
     
+    private(set) var tasks: [Task] = [] { //Нужен ли?
+        didSet { onTasksUpdated?(tasks) }
+    }
+    
+    var onTasksUpdated: (([Task]) -> Void)?
+    var onAddTaskTapped: (() -> Void)? //Нужен ли?
+    
     init(getTasksUseCase: GetTasksUseCase,
-         addTaskUseCase: AddTaskUseCase,
-         updateTaskUseCase: UpdateTaskUseCase,
          deleteTaskUseCase: DeleteTaskUseCase) {
         self.getTasksUseCase = getTasksUseCase
-        self.addTaskUseCase = addTaskUseCase
-        self.updateTaskUseCase = updateTaskUseCase
         self.deleteTaskUseCase = deleteTaskUseCase
     }
     
-    func loadTasks() -> [Task] { getTasksUseCase.execute() }
-    func addNewTask(_ task: Task) { addTaskUseCase.execute(task: task) }
-    func updateTask(_ task: Task) { updateTaskUseCase.execute(task: task) }
-    func deleteTask(_ task: Task) { deleteTaskUseCase.execute(task: task) }
+    func loadTasks() {
+        tasks = getTasksUseCase.execute()
+    }
     
-    var onAddTaskTapped: (() -> Void)?
+//    func addNewTask(_ task: Task) {
+//        addTaskUseCase.execute(task: task)
+//        loadTasks() // Судя по всему нужно этот метод переместить в AddTaskViewModel и связать его с loadTasks
+//    }
+    
+    func deleteTask(_ task: Task) { deleteTaskUseCase.execute(task: task) }
     
     func addTaskButtonTapped() {
         onAddTaskTapped?()
