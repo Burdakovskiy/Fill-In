@@ -16,6 +16,24 @@ final class AppCoordinator: BaseCoordinator {
     }
     
     override func start() {
+        showMainFlow()
+    }
+}
+
+private extension AppCoordinator {
+    func showLoginFlow() {
         
+    }
+    
+    func showBiometricFlowIfNeeded() {
+        
+    }
+    
+    func showMainFlow() {
+        let tabBarCoordinator = TabBarCoordinator()
+        addChildCoordinator(tabBarCoordinator)
+        tabBarCoordinator.start()
+        
+        window.rootViewController = tabBarCoordinator.getRootViewController()
     }
 }

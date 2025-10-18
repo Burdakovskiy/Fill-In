@@ -9,4 +9,8 @@ import UIKit
 
 final class StatsViewController: BaseViewController<StatsView, StatsViewModel> {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Stats"
+    }
 }

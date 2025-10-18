@@ -8,5 +8,14 @@
 import Foundation
 
 final class TaskViewModel {
+    private let getTasksUseCase: GetTasksUseCase
+    private let addTaskUseCase: AddTaskUseCase
+    private let updateTaskUseCase: UpdateTaskUseCase
+    private let deleteTaskUseCase: DeleteTaskUseCase
     
+    var onAddTaskTapped: (() -> Void)?
+    
+    func addTaskButtonTapped() {
+        onAddTaskTapped?()
+    }
 }

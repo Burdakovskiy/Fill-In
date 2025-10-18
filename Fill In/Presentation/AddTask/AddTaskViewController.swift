@@ -11,5 +11,7 @@ final class AddTaskViewController: BaseViewController<AddTaskView, AddTaskViewMo
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Add Task"
+        view.backgroundColor = .white
     }
 }

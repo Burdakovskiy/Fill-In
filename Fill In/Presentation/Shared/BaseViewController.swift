@@ -9,14 +9,20 @@ import UIKit
 
 class BaseViewController<RootView: UIView, ViewModelType>: UIViewController {
     
-    var mainView: RootView { view as! RootView }
-    var viewModel: ViewModelType!
+    let mainView: RootView
+    let viewModel: ViewModelType
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(viewModel: ViewModelType) {
+        self.mainView = RootView()
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
-        view = RootView()
+        view = mainView
     }
 }

@@ -1,0 +1,27 @@
+//
+//  AppDIContainer.swift
+//  Fill In
+//
+//  Created by Дмитрий on 17.10.2025.
+//
+
+import Foundation
+
+final class AppDIContainer {
+    
+    //MARK: - Services
+    lazy var speechService: SpeechService = SpeechService()
+    
+    //MARK: - Data
+//    lazy var taskRepository: TaskRepository = RealmTaskRepository
+    
+    //MARK: - UseCases
+    
+//    func makeAddTaskUseCase() -> AddTaskUseCase {
+//        AddTaskUseCase(repository: taskRepository)
+//    }
+    
+    func makeTasksViewModel() -> TaskViewModel {
+        
+    }
+}

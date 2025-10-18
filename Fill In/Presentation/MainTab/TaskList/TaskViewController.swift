@@ -11,5 +11,10 @@ final class TaskViewController: BaseViewController<TaskView, TaskViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Task"
+        
+        mainView.addButtonAction = { [weak self] in
+            self?.viewModel.addTaskButtonTapped()
+        }
     }
 }

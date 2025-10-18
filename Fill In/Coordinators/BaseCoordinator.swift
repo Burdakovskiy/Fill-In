@@ -14,6 +14,7 @@ protocol Coordinator: AnyObject {
 
 class BaseCoordinator: Coordinator {
     var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
     
     init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
@@ -21,5 +22,15 @@ class BaseCoordinator: Coordinator {
     
     func start() {
         fatalError("Start method must be implemented by subclass")
+    }
+    
+    func addChildCoordinator(_ coordinator: Coordinator) {
+        childCoordinators.append(coordinator)
+        print("Added child: \(type(of: coordinator))")
+    }
+    
+    func removeChildCoordinator(_ coordinator: Coordinator) {
+        childCoordinators.removeAll { $0 === coordinator }
+        print("Removed child: \(type(of: coordinator))")
     }
 }
