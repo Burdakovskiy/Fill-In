@@ -8,7 +8,6 @@
 import UIKit
 
 final class CategoryCell: UICollectionViewCell {
-    static let identifier = "CategoryCell" //переписать на статические икстеншн
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -18,26 +17,25 @@ final class CategoryCell: UICollectionViewCell {
         return label
     }()
     
-    override var isSelected: Bool {
-        didSet {
-            backgroundColor = isSelected ? .black : .white
-            titleLabel.textColor = isSelected ? .white : .black
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.cornerRadius = 16
         layer.masksToBounds = true
         contentView.addSubview(titleLabel)
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with category: FilterTaskCategory) {
-        titleLabel.text = category.rawValue
+    func configure(with category: String) {
+        titleLabel.text = category
+    }
+    
+    func setSelectedState(_ isActive: Bool) {
+        backgroundColor = isActive ? .black : .white
+        titleLabel.textColor = isActive ? .white : .black
     }
 }
 

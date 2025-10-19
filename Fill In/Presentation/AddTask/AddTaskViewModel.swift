@@ -32,6 +32,11 @@ final class AddTaskViewModel {
         self.deleteTaskUseCase = deleteTaskUseCase
         self.task = task
         self.isEditing = (task != nil)
+        if let task = task {
+            print("🟢 Переход по таске: \(task.title), id: \(task.id)")
+        } else {
+            print("🆕 Создание новой таски")
+        }
     }
     
     //MARK: - Public Methods
@@ -73,6 +78,12 @@ final class AddTaskViewModel {
         task.importance = importance
         
         updateTaskUseCase.execute(task: task)
+        onTaskSaved?()
+    }
+    
+    func mockSave(task: Task) {
+        print("💾 Mock save called: \(task.title)")
+        addTaskUseCase.execute(task: task)
         onTaskSaved?()
     }
 }

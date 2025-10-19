@@ -9,15 +9,20 @@ import UIKit
 
 final class TaskView: UIView {
     
-    //Все пересмотреть мне кажется тут сильно нагружено получилось, нужно как будто разделить
-    
+    //MARK: - Callbacks
     var addButtonAction: (() -> Void)?
     var onCategorySelected: ((FilterTaskCategory) -> Void)?
     
-    let tableView: UITableView = {
+    //MARK: - State
+    private var selectedCategory: FilterTaskCategory?
+    private var categories: [FilterCategoryViewModel] = []
+    
+    //MARK: - UI Elements
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.register(TaskCell.self, forCellReuseIdentifier: TaskCell.id)
         tableView.backgroundColor = .clear
         return tableView
     }()
@@ -33,8 +38,6 @@ final class TaskView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    private var categories: [FilterTaskCategory] = []
     
     private let addTaskButton: UIButton = {
         let button = UIButton()
@@ -53,12 +56,13 @@ final class TaskView: UIView {
         return button
     }()
     
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addTaskButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         setupUI()
         setupCollectionView()
         setConstraints()
+        addTaskButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -70,8 +74,9 @@ final class TaskView: UIView {
         addTaskButton.layer.cornerRadius = addTaskButton.frame.height / 2
     }
     
+    //MARK: - Setup
     private func setupCollectionView() {
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.id)
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -83,44 +88,76 @@ final class TaskView: UIView {
         addSubview(addTaskButton)
     }
     
+    //MARK: - Actions
     @objc private func addButtonTapped() {
         addButtonAction?()
     }
     
-    func updateCategories(_ categories: [FilterTaskCategory]) {
-        self.categories = categories
-        collectionView.reloadData()
-        if !categories.isEmpty {
-            collectionView.selectItem(at: IndexPath(item: 0, section: 0),
-                                      animated: false,
-                                      scrollPosition: [])
+    //MARK: - Public Methods
+    func set(delegate: UITableViewDelegate) {
+        tableView.delegate = delegate
+    }
+    
+    func set(dataSourse: UITableViewDataSource) {
+        tableView.dataSource = dataSourse
+    }
+    
+    func reloadTableViewData() {
+        tableView.reloadData()
+    }
+    
+    func deselectRow(at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func updateCategories(_ filtersWithCounts: [FilterCategoryViewModel]) {
+        self.categories = filtersWithCounts
+        
+        if selectedCategory == nil, let first = filtersWithCounts.first?.category {
+            selectedCategory = first
+            onCategorySelected?(first)
         }
+        
+        collectionView.reloadData()
     }
 }
 
+
+//MARK: - UICollectionView
 extension TaskView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-        cell.configure(with: categories[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.id, for: indexPath) as! CategoryCell
+        let model = categories[indexPath.item]
+        
+        cell.configure(with: model.title)
+        cell.setSelectedState(model.category == selectedCategory)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selected = categories[indexPath.item]
+        let selected = categories[indexPath.item].category
+        
+        selectedCategory = selected
+        collectionView.reloadData()
+        
         onCategorySelected?(selected)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let title = categories[indexPath.item].rawValue
+        let filterModel = categories[indexPath.item]
+        let title = filterModel.title
         let width = title.size(withAttributes: [.font: UIFont.systemFont(ofSize: 15, weight: .medium)]).width + 30
         return CGSize(width: width, height: 34)
     }
 }
 
+
+//MARK: - Constraints
 private extension TaskView {
     func setConstraints() {
         NSLayoutConstraint.activate([
