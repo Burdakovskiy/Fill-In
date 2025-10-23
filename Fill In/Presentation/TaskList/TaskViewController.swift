@@ -13,7 +13,7 @@ final class TaskViewController: BaseViewController<TaskView, TaskViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Task"
+        title = "Tasks"
         
         mainView.set(delegate: self)
         mainView.set(dataSourse: self)
@@ -61,6 +61,31 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let task = tasks[indexPath.row]
         viewModel.selected(task: task)
-        mainView.deselectRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
+//        mainView.deselectRow(at: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, completion in
+            guard let self = self else { return }
+            let alert = UIAlertController(title: "Delete task?",
+                                          message: "This action cannot be undone.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
+                let task = self.tasks[indexPath.row]
+                self.viewModel.deleteTask(task)
+            })
+            self.present(alert, animated: true)
+            
+            completion(true)
+        }
+        
+        deleteAction.backgroundColor = .systemRed
+        deleteAction.image = UIImage(systemName: "trash")
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = true
+        return config
     }
 }

@@ -55,7 +55,10 @@ final class TaskViewModel {
     
     func deleteTask(_ task: Task) {
         deleteTaskUseCase.execute(task: task)
-        loadTasks()
+        allTasks.removeAll { $0.id == task.id }
+        applyFilter()
+        
+        onFiltersUpdated?(activeFiltersWithCounts())
     }
     
     func addTaskButtonTapped() {
@@ -72,6 +75,7 @@ final class TaskViewModel {
             return
         }
         filteredTasks = filterTasks(for: selected)
+        
         onTasksUpdated?(filteredTasks)
         onFiltersUpdated?(activeFiltersWithCounts())
     }

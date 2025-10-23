@@ -13,7 +13,7 @@ final class AppDIContainer {
     lazy var speechService: SpeechService = SpeechService()
     
     //MARK: - Data
-    lazy var taskRepository: TaskRepository = MockTaskRepository()
+    lazy var taskRepository: TaskRepository = MockTaskRepository() //MockTaskRepository //RealmTaskRepository
     lazy var settingsRepository: UserSettingsRepository = UserDefaultsUserSettingsRepository()
     
     //MARK: - UseCases

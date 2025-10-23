@@ -47,7 +47,8 @@ final class RealmTaskRepository: TaskRepository {
     
     func deleteTask(_ task: Task) {
         guard let object = realm.object(ofType: RealmTaskObject.self, forPrimaryKey: task.id) else {
-            fatalError("Can't find existing task object by id: \(task.id)")
+            print("⚠️ Task not found in Realm for delete: \(task.id)")
+            return
         }
         try? realm.write {
             realm.delete(object)
