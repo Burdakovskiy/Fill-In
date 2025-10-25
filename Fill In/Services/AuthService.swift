@@ -39,7 +39,6 @@ final class AuthService: NSObject {
             return
         }
 
-        // сбрасываем сессию перед новым входом
         GIDSignIn.sharedInstance.signOut()
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
 
@@ -80,14 +79,19 @@ final class AuthService: NSObject {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.email, .fullName]
 
-        // генерируем nonce
         let nonce = Self.randomNonceString()
         currentNonce = nonce
         request.nonce = Self.sha256(nonce)
 
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
-        controller.presentationContextProvider = vc as ASAuthorizationControllerPresentationContextProviding
+        
+        if let provider = vc as? AppleSignInPresentable {
+            controller.presentationContextProvider = provider
+        } else {
+            assertionFailure("ViewController must conform to AppleSignInPresentable to handle Apple Sign In")
+        }
+        
         controller.performRequests()
     }
 
@@ -184,8 +188,11 @@ private extension AuthService {
 }
 
 // MARK: - Presentation Context Provider
-extension UIViewController: ASAuthorizationControllerPresentationContextProviding {
-    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+
+protocol AppleSignInPresentable: ASAuthorizationControllerPresentationContextProviding {}
+
+extension AppleSignInPresentable where Self: UIViewController {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
 }
