@@ -1,5 +1,5 @@
 //
-//  AuthViewModel.swift
+//  LoginViewModel.swift
 //  Fill In
 //
 //  Created by Дмитрий on 16.10.2025.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-final class AuthViewModel {
+final class LoginViewModel {
     
 }

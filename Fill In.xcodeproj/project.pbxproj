@@ -66,7 +66,7 @@
 		68F81BB52EA12E4400AA48DC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BB42EA12E4400AA48DC /* BaseViewController.swift */; };
 		68F81BB72EA12E8400AA48DC /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BB62EA12E8400AA48DC /* Bindable.swift */; };
 		68F81BB92EA13D9A00AA48DC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BB82EA13D9A00AA48DC /* LoginView.swift */; };
-		68F81BBB2EA13E9900AA48DC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BBA2EA13E9900AA48DC /* AuthViewModel.swift */; };
+		68F81BBB2EA13E9900AA48DC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F81BBA2EA13E9900AA48DC /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,7 +124,7 @@
 		68F81BB42EA12E4400AA48DC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		68F81BB62EA12E8400AA48DC /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		68F81BB82EA13D9A00AA48DC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		68F81BBA2EA13E9900AA48DC /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		68F81BBA2EA13E9900AA48DC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,7 +353,7 @@
 			children = (
 				68F81BA62EA12C3100AA48DC /* LoginViewController.swift */,
 				68F81BB82EA13D9A00AA48DC /* LoginView.swift */,
-				68F81BBA2EA13E9900AA48DC /* AuthViewModel.swift */,
+				68F81BBA2EA13E9900AA48DC /* LoginViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -525,7 +525,7 @@
 				68F81BB52EA12E4400AA48DC /* BaseViewController.swift in Sources */,
 				6828A4A92EA2B19C00C41D38 /* DeleteTaskUseCase.swift in Sources */,
 				6816E3092EA4DA1700E6CE03 /* UpdateActiveFiltersUseCase.swift in Sources */,
-				68F81BBB2EA13E9900AA48DC /* AuthViewModel.swift in Sources */,
+				68F81BBB2EA13E9900AA48DC /* LoginViewModel.swift in Sources */,
 				6828A4A52EA2B16C00C41D38 /* GetTasksUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
